@@ -2,6 +2,9 @@
   "name": "expense-be",
   "module": "index.ts",
   "type": "module",
+  "scripts": {
+    "start": "bun --hot src/server.ts"
+  },
   "devDependencies": {
     "bun-types": "latest"
   },
