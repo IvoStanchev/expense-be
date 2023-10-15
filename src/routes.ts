@@ -1,6 +1,7 @@
 import { ENDPOINTS } from "./constants/endpoints";
 import { METHODS } from "./constants/methods";
-import { getSlash } from "./controllers/slash";
+import { createExpense } from "./controllers/expenses";
+import { createUser,readUser } from "./controllers/users";
 import { RequestConstructorProps } from "./types/server";
 
 //Handle request creation
@@ -14,7 +15,7 @@ export class RequestConstructor {
 
   //Given a route structure with path, method, return a response using a callback.
   request(
-    routes: Record<ENDPOINTS, RequestConstructorProps>,
+    routes: Record<ENDPOINTS, RequestConstructorProps>
   ): Response | Promise<Response> {
     //get url and method from http server
     const urlPath = new URL(this.req.url).pathname as ENDPOINTS;
@@ -32,19 +33,22 @@ export class RequestConstructor {
 
 //Routes
 export const routes: Record<ENDPOINTS, RequestConstructorProps> = {
-  [ENDPOINTS.SLASH]: {
-    [METHODS.GET]: {
-      callback: getSlash,
-    },
-  },
   [ENDPOINTS.EXPENSES]: {
     [METHODS.GET]: {
-      callback: getSlash,
+      callback: createExpense,
     },
   },
-  [ENDPOINTS.USER]: {
+  [ENDPOINTS.USERS]: {
     [METHODS.GET]: {
-      callback: getSlash,
+      callback: readUser,
+    },
+    [METHODS.POST]: {
+      callback: createUser,
+    },
+  },
+  [ENDPOINTS.CATEGORIES]: {
+    [METHODS.GET]: {
+      callback: createExpense,
     },
   },
 };

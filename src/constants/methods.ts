@@ -4,4 +4,5 @@ export enum METHODS {
   DELETE = "DELETE",
   PUT = "PUT",
   PATCH = "PATCH",
+  OPTIONS = "OPTIONS",
 }
