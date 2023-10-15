@@ -1,5 +1,5 @@
 export enum ENDPOINTS {
-  SLASH = "/",
   EXPENSES = "/expenses",
-  USER = "/user",
+  USERS = "/users",
+  CATEGORIES = "/categories"
 }
